@@ -51,10 +51,7 @@ namespace ConsoleApplication1
 // ReSharper disable once FunctionNeverReturns
             } );
             await Task.WhenAny( consumer, Task.Delay( MilliSecondsConsumerTimeout ) );
-            if ( !consumer.IsCompleted ) {
-                Console.WriteLine( "  Consumer {0} stop waiting", consumerNumber );
-            }
-            await consumer;
+            Console.WriteLine( "  Consumer {0} stop waiting", consumerNumber );
         }
     }
 }
