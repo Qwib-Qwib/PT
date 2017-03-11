@@ -42,12 +42,13 @@ namespace ConsoleApplication1
 
         private async void RunConsumer( int consumerNumber ) {
             var consumer = Task.Factory.StartNew( ( ) => {
-                int item;
-                while ( _superQueue.Pop( out item ) ) {
+                while ( true ) {
+                    var item = _superQueue.Pop( );
                     var milliSecondsHardWork = _random.Next( 100, 500 );
                     Thread.Sleep( milliSecondsHardWork );
                     Console.WriteLine( "Consumer {0} process item {1}", consumerNumber, item );
                 }
+// ReSharper disable once FunctionNeverReturns
             } );
             await Task.WhenAny( consumer, Task.Delay( MilliSecondsConsumerTimeout ) );
             if ( !consumer.IsCompleted ) {

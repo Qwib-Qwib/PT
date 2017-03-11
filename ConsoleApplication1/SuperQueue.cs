@@ -21,19 +21,16 @@ namespace ConsoleApplication1
             }
         }
 
-        public bool Pop( out T item ) {
-            item = default( T );
+        public T Pop( ) {
+            T item;
             lock ( _syncRoot ) {
                 while ( _queue.Count == 0 ) {
                     Monitor.Wait( _syncRoot );
                 }
-                if ( _queue.Count == 0 ) {
-                    return false;
-                }
                 item = _queue.Dequeue( );
                 Monitor.PulseAll( _syncRoot );
             }
-            return true;
+            return item;
         }
     }
 }
