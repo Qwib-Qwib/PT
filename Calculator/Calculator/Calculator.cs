@@ -19,9 +19,9 @@ namespace Calculator {
 
         private readonly ITokenParser _tokenParser;
 
-        private readonly IProcessTokenCommandFactory _commandFactory;
+        private readonly IShuntingYardCommandFactory _commandFactory;
 
-        public Calculator( ITokenParser tokenParser, IProcessTokenCommandFactory commandFactory) {
+        public Calculator( ITokenParser tokenParser, IShuntingYardCommandFactory commandFactory) {
             if ( tokenParser == null ) {
                 throw new ArgumentNullException( "tokenParser" );
             }

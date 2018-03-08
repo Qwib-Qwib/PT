@@ -1,5 +1,5 @@
 ﻿namespace Calculator {
-    public interface IProcessTokenCommandFactory {
+    public interface IShuntingYardCommandFactory {
         IShuntingYardCommand GetCommand( TokenType tokenType );
     }
 }

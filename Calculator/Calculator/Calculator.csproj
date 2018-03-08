@@ -46,7 +46,7 @@
     <Compile Include="ICalculator.cs" />
     <Compile Include="IShuntingYard.cs" />
     <Compile Include="IShuntingYardCommand.cs" />
-    <Compile Include="IProcessTokenCommandFactory.cs" />
+    <Compile Include="IShuntingYardCommandFactory.cs" />
     <Compile Include="ITokenParser.cs" />
     <Compile Include="Messages.cs" />
     <Compile Include="ShuntingYardCommandFactory.cs" />

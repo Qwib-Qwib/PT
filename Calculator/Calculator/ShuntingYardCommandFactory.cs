@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace Calculator {
-    public class ShuntingYardCommandFactory : IProcessTokenCommandFactory {
+    public class ShuntingYardCommandFactory : IShuntingYardCommandFactory {
 
         private static readonly Lazy<ShuntingYardCommandFactory> _instance =
             new Lazy<ShuntingYardCommandFactory>( ( ) => new ShuntingYardCommandFactory( ) );
