@@ -1,5 +1,0 @@
-W:\#ПРОЕКТЫ\PT\Mindbox\Mindbox\bin\Debug\Mindbox.dll
-W:\#ПРОЕКТЫ\PT\Mindbox\Mindbox\bin\Debug\Mindbox.pdb
-W:\#ПРОЕКТЫ\PT\Mindbox\Mindbox\obj\Debug\Mindbox.dll
-W:\#ПРОЕКТЫ\PT\Mindbox\Mindbox\obj\Debug\Mindbox.pdb
-W:\#ПРОЕКТЫ\PT\Mindbox\Mindbox\obj\Debug\Mindbox.csprojResolveAssemblyReference.cache
