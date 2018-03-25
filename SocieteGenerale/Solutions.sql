@@ -1,4 +1,4 @@
---Solutions
+﻿--Solutions
 --Sql Server 2014 Express Edition
 --1
 --Выдать все контракты, заключенные в 2016 году, у которых нет ни одной оплаты (prm_collected не заполнен). 
@@ -17,8 +17,8 @@ insert into tbl_premium ( prm_contract
                          ,prm_collected )
   select c.cnt_id
         ,null
-        ,0
-        ,0
+        ,null
+        ,null
    from tbl_contract c left join tbl_premium p 
                               on c.cnt_id = p.prm_contract
   where p.prm_id is null
