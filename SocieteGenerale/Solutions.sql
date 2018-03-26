@@ -4,11 +4,12 @@
 --Выдать все контракты, заключенные в 2016 году, у которых нет ни одной оплаты (prm_collected не заполнен). 
 select c.cnt_id
       ,c.cnt_number
-      ,c.cnt_date
 from tbl_contract c left join tbl_premium p 
                            on c.cnt_id = p.prm_contract
 where datepart( year, c.cnt_date ) = 2016
-  and p.prm_collected is null
+group by c.cnt_id
+        ,c.cnt_number
+having( count( p.prm_collected ) = 0 )
 --2
 --Для всех контрактов, у которых нет ни одной начисленной премии (нет записей в таблице tbl_premium), добавить по одной записи в таблицу премий.
 insert into tbl_premium ( prm_contract
