@@ -10,6 +10,15 @@ where datepart( year, c.cnt_date ) = 2016
 group by c.cnt_id
         ,c.cnt_number
 having( count( p.prm_collected ) = 0 )
+
+--
+select c.cnt_id
+      ,c.cnt_number
+from tbl_contract c
+where datepart( year, c.cnt_date ) = 2016
+  and c.cnt_id not in ( select p.prm_contract 
+                          from tbl_premium p
+                         where p.prm_collected is not null )
 --2
 --Для всех контрактов, у которых нет ни одной начисленной премии (нет записей в таблице tbl_premium), добавить по одной записи в таблицу премий.
 insert into tbl_premium ( prm_contract
@@ -44,6 +53,18 @@ with t( c_id
                   group by c.cnt_id )
 delete p
 from tbl_premium p inner join t
+                           on p.prm_contract = t.c_id
+                          and p.prm_id = t.p_id 
+--
+delete p
+from tbl_premium p inner join (
+                                  select c.cnt_id
+                                        ,max( prm_id ) as prm_id
+                                    from tbl_premium p inner join tbl_contract c 
+                                                               on c.cnt_id = p.prm_id
+                                   where c.cnt_number in ( 'A', 'B', 'C' )
+                                     and p.prm_type = 'R'
+                                group by c.cnt_id )t
                            on p.prm_contract = t.c_id
                           and p.prm_id = t.p_id 
 
